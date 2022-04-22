@@ -1,6 +1,6 @@
 const note= require('express').Router();
 //import all function from helpers.
-const { readAndAppend, readFromFile } = require('./helper/helper')
+const { readAndAppend, readFromFile, uuid } = require('./helper/helper')
 
 note.get('/', (req, res) => 
     readFromFile('./db/db.json').then((data) => res.json(JSON.parse(data)))
@@ -8,13 +8,13 @@ note.get('/', (req, res) =>
 
 
 note.post('/', (req, res) =>{
-    const {title, text, id} = req.body;
+    const {title, text} = req.body;
 
     if (req.body) {
 const newNote = {
     title,
     text,
-    id
+    id: uuid()
 };
 
     readAndAppend(newNote, './db/db.json');
