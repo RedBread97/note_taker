@@ -51,7 +51,6 @@ const deleteNote = (id) =>
   });
 
 const renderActiveNote = () => {
-  console.log(activeNote);
   hide(saveNoteBtn);
 
   if (activeNote.id) {
@@ -100,8 +99,7 @@ const handleNoteDelete = (e) => {
 const handleNoteView = (e) => {
   e.preventDefault();
   activeNote = JSON.parse(e.target.parentElement.getAttribute('data-note'));
-  console.log(activeNote);
-  renderActiveNote();
+  renderActiveNote(activeNote);
 };
 
 // Sets the activeNote to and empty object and allows the user to enter a new note
