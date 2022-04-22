@@ -3,7 +3,7 @@ const note= require('express').Router();
 const { readAndAppend, readFromFile } = require('./helper/helper')
 
 note.get('/', (req, res) => 
-    readFromFile('./db/de.json').then((data) => res.json(JSON.parse(data)))
+    readFromFile('./db/db.json').then((data) => res.json(JSON.parse(data)))
 );
 
 
@@ -17,7 +17,7 @@ const newNote = {
     id
 };
 
-    readAndAppend(newNote, '/db/de.json');
+    readAndAppend(newNote, './db/db.json');
     res.json('note has been added');
     }else {
         res.error('error adding new note');
